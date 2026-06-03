@@ -1,0 +1,6 @@
+# Temp files
+*.tmp
+*.swp
+*.pyc
+__pycache__/
+.DS_Store
