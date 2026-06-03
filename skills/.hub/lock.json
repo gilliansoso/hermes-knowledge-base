@@ -1,0 +1,153 @@
+{
+  "version": 1,
+  "installed": {
+    "scrapling": {
+      "source": "official",
+      "identifier": "official/research/scrapling",
+      "trust_level": "builtin",
+      "scan_verdict": "safe",
+      "content_hash": "sha256:d360d73e74744838",
+      "install_path": "research/scrapling",
+      "files": [
+        "SKILL.md"
+      ],
+      "metadata": {},
+      "installed_at": "2026-06-03T04:52:51.137782+00:00",
+      "updated_at": "2026-06-03T04:52:51.137796+00:00"
+    },
+    "duckduckgo-search": {
+      "source": "official",
+      "identifier": "official/research/duckduckgo-search",
+      "trust_level": "builtin",
+      "scan_verdict": "safe",
+      "content_hash": "sha256:25ae5cbdbb2bff0b",
+      "install_path": "research/duckduckgo-search",
+      "files": [
+        "SKILL.md",
+        "scripts/duckduckgo.sh"
+      ],
+      "metadata": {},
+      "installed_at": "2026-06-03T04:52:58.569551+00:00",
+      "updated_at": "2026-06-03T04:52:58.569640+00:00"
+    },
+    "outlines": {
+      "source": "official",
+      "identifier": "official/mlops/inference/outlines",
+      "trust_level": "builtin",
+      "scan_verdict": "safe",
+      "content_hash": "sha256:64c71ae5491d07e6",
+      "install_path": "mlops/inference/outlines",
+      "files": [
+        "SKILL.md",
+        "references/examples.md",
+        "references/backends.md",
+        "references/json_generation.md"
+      ],
+      "metadata": {},
+      "installed_at": "2026-06-03T05:03:14.168118+00:00",
+      "updated_at": "2026-06-03T05:03:14.168131+00:00"
+    },
+    "axolotl": {
+      "source": "official",
+      "identifier": "official/mlops/training/axolotl",
+      "trust_level": "builtin",
+      "scan_verdict": "dangerous",
+      "content_hash": "sha256:08d6156e208d179a",
+      "install_path": "mlops/training/axolotl",
+      "files": [
+        "SKILL.md",
+        "references/other.md",
+        "references/index.md",
+        "references/dataset-formats.md",
+        "references/api.md"
+      ],
+      "metadata": {},
+      "installed_at": "2026-06-03T05:03:17.290947+00:00",
+      "updated_at": "2026-06-03T05:03:17.290963+00:00"
+    },
+    "chroma": {
+      "source": "official",
+      "identifier": "official/mlops/chroma",
+      "trust_level": "builtin",
+      "scan_verdict": "safe",
+      "content_hash": "sha256:f012dc15858b98f3",
+      "install_path": "mlops/chroma",
+      "files": [
+        "SKILL.md",
+        "references/integration.md"
+      ],
+      "metadata": {},
+      "installed_at": "2026-06-03T05:03:19.154467+00:00",
+      "updated_at": "2026-06-03T05:03:19.154482+00:00"
+    },
+    "guidance": {
+      "source": "official",
+      "identifier": "official/mlops/guidance",
+      "trust_level": "builtin",
+      "scan_verdict": "safe",
+      "content_hash": "sha256:0549c5c16f63fb3e",
+      "install_path": "mlops/guidance",
+      "files": [
+        "SKILL.md",
+        "references/constraints.md",
+        "references/examples.md",
+        "references/backends.md"
+      ],
+      "metadata": {},
+      "installed_at": "2026-06-03T05:03:21.425089+00:00",
+      "updated_at": "2026-06-03T05:03:21.425102+00:00"
+    },
+    "clip": {
+      "source": "official",
+      "identifier": "official/mlops/clip",
+      "trust_level": "builtin",
+      "scan_verdict": "safe",
+      "content_hash": "sha256:bf29a967624f0b82",
+      "install_path": "mlops/clip",
+      "files": [
+        "SKILL.md",
+        "references/applications.md"
+      ],
+      "metadata": {},
+      "installed_at": "2026-06-03T05:03:27.697818+00:00",
+      "updated_at": "2026-06-03T05:03:27.697831+00:00"
+    },
+    "accelerate": {
+      "source": "official",
+      "identifier": "official/mlops/accelerate",
+      "trust_level": "builtin",
+      "scan_verdict": "caution",
+      "content_hash": "sha256:e899b453a937a31b",
+      "install_path": "mlops/accelerate",
+      "files": [
+        "SKILL.md",
+        "references/performance.md",
+        "references/custom-plugins.md",
+        "references/megatron-integration.md"
+      ],
+      "metadata": {},
+      "installed_at": "2026-06-03T05:03:55.723954+00:00",
+      "updated_at": "2026-06-03T05:03:55.723970+00:00"
+    },
+    "trl-fine-tuning": {
+      "source": "official",
+      "identifier": "official/mlops/training/trl-fine-tuning",
+      "trust_level": "builtin",
+      "scan_verdict": "safe",
+      "content_hash": "sha256:45f55cf60cf10a3a",
+      "install_path": "mlops/training/trl-fine-tuning",
+      "files": [
+        "SKILL.md",
+        "templates/basic_grpo_training.py",
+        "references/dpo-variants.md",
+        "references/sft-training.md",
+        "references/online-rl.md",
+        "references/grpo-training.md",
+        "references/reward-modeling.md"
+      ],
+      "metadata": {},
+      "installed_at": "2026-06-03T05:03:57.942338+00:00",
+      "updated_at": "2026-06-03T05:03:57.942352+00:00"
+    }
+  }
+}

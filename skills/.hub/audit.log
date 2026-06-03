@@ -1,0 +1,9 @@
+2026-06-03T04:52:51Z INSTALL scrapling official:builtin safe sha256:d360d73e74744838
+2026-06-03T04:52:58Z INSTALL duckduckgo-search official:builtin safe sha256:25ae5cbdbb2bff0b
+2026-06-03T05:03:14Z INSTALL outlines official:builtin safe sha256:64c71ae5491d07e6
+2026-06-03T05:03:17Z INSTALL axolotl official:builtin dangerous sha256:08d6156e208d179a
+2026-06-03T05:03:19Z INSTALL chroma official:builtin safe sha256:f012dc15858b98f3
+2026-06-03T05:03:21Z INSTALL guidance official:builtin safe sha256:0549c5c16f63fb3e
+2026-06-03T05:03:27Z INSTALL clip official:builtin safe sha256:bf29a967624f0b82
+2026-06-03T05:03:55Z INSTALL accelerate official:builtin caution sha256:e899b453a937a31b
+2026-06-03T05:03:57Z INSTALL trl-fine-tuning official:builtin safe sha256:45f55cf60cf10a3a
