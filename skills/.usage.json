@@ -1,16 +1,42 @@
 {
-  "github-auth": {
+  "auto-experience-doc": {
     "archived_at": null,
-    "created_at": "2026-06-03T10:32:00.302648+00:00",
+    "created_at": "2026-06-03T10:59:23.278458+00:00",
     "created_by": null,
-    "last_patched_at": null,
-    "last_used_at": "2026-06-03T10:32:00.306653+00:00",
-    "last_viewed_at": "2026-06-03T10:32:00.302713+00:00",
-    "patch_count": 0,
+    "last_patched_at": "2026-06-03T11:08:29.641898+00:00",
+    "last_used_at": "2026-06-03T11:15:20.112615+00:00",
+    "last_viewed_at": "2026-06-03T11:15:20.108585+00:00",
+    "patch_count": 4,
+    "pinned": false,
+    "state": "active",
+    "use_count": 6,
+    "view_count": 6
+  },
+  "chinese-messaging-gateway": {
+    "archived_at": null,
+    "created_at": "2026-06-03T11:00:27.240845+00:00",
+    "created_by": "agent",
+    "last_patched_at": "2026-06-03T11:00:57.443427+00:00",
+    "last_used_at": "2026-06-03T11:01:12.509540+00:00",
+    "last_viewed_at": "2026-06-03T11:01:12.505193+00:00",
+    "patch_count": 2,
     "pinned": false,
     "state": "active",
     "use_count": 1,
     "view_count": 1
+  },
+  "github-auth": {
+    "archived_at": null,
+    "created_at": "2026-06-03T10:32:00.302648+00:00",
+    "created_by": null,
+    "last_patched_at": "2026-06-03T10:44:11.100683+00:00",
+    "last_used_at": "2026-06-03T11:06:03.723638+00:00",
+    "last_viewed_at": "2026-06-03T11:06:03.719395+00:00",
+    "patch_count": 5,
+    "pinned": false,
+    "state": "active",
+    "use_count": 5,
+    "view_count": 5
   },
   "github-repo-management": {
     "archived_at": null,
@@ -30,13 +56,26 @@
     "created_at": "2026-06-03T03:55:05.130186+00:00",
     "created_by": null,
     "last_patched_at": null,
-    "last_used_at": "2026-06-03T08:13:38.911961+00:00",
-    "last_viewed_at": "2026-06-03T08:13:38.907040+00:00",
+    "last_used_at": "2026-06-03T11:10:46.682250+00:00",
+    "last_viewed_at": "2026-06-03T11:10:46.678192+00:00",
     "patch_count": 0,
     "pinned": false,
     "state": "active",
-    "use_count": 4,
-    "view_count": 4
+    "use_count": 6,
+    "view_count": 6
+  },
+  "hermes-agent-skill-authoring": {
+    "archived_at": null,
+    "created_at": "2026-06-03T10:44:17.690904+00:00",
+    "created_by": null,
+    "last_patched_at": null,
+    "last_used_at": "2026-06-03T10:44:17.695185+00:00",
+    "last_viewed_at": "2026-06-03T10:44:17.690931+00:00",
+    "patch_count": 0,
+    "pinned": false,
+    "state": "active",
+    "use_count": 1,
+    "view_count": 1
   },
   "hermes-full-optimization": {
     "archived_at": null,
@@ -107,14 +146,14 @@
     "archived_at": null,
     "created_at": "2026-06-03T09:04:11.694817+00:00",
     "created_by": "agent",
-    "last_patched_at": "2026-06-03T10:30:11.589594+00:00",
-    "last_used_at": "2026-06-03T10:29:13.415228+00:00",
-    "last_viewed_at": "2026-06-03T10:29:13.411326+00:00",
-    "patch_count": 8,
+    "last_patched_at": "2026-06-03T11:15:50.195863+00:00",
+    "last_used_at": "2026-06-03T11:15:13.863208+00:00",
+    "last_viewed_at": "2026-06-03T11:15:13.859595+00:00",
+    "patch_count": 9,
     "pinned": false,
     "state": "active",
-    "use_count": 9,
-    "view_count": 9
+    "use_count": 11,
+    "view_count": 11
   },
   "scrapling": {
     "archived_at": null,

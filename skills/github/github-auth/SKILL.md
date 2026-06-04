@@ -56,7 +56,7 @@ Tell the user to go to: **https://github.com/settings/tokens**
 - Select scopes:
   - `repo` (full repository access — read, write, push, PRs)
   - `workflow` (trigger and manage GitHub Actions)
-  - `read:org` (if working with organization repos)
+  - `read:org` (required even for personal repos if you plan to use `gh auth login` — `gh` validates this scope on login)
 - Set expiration (90 days is a good default)
 - Copy the token — it won't be shown again
 
@@ -75,6 +75,14 @@ git ls-remote https://github.com/<their-username>/<any-repo>.git
 
 After entering credentials once, they're saved and reused for all future operations.
 
+**Headless environment** (no TTY to prompt): write the credential file directly:
+
+```bash
+echo 'https://<username>:<token>@github.com' > ~/.git-credentials
+chmod 600 ~/.git-credentials
+git config --global credential.helper store
+```
+
 **Alternative: cache helper (credentials expire from memory)**
 
 ```bash
@@ -82,12 +90,7 @@ After entering credentials once, they're saved and reused for all future operati
 git config --global credential.helper 'cache --timeout=28800'
 ```
 
-**Alternative: set the token directly in the remote URL (per-repo)**
-
-```bash
-# Embed token in the remote URL (avoids credential prompts entirely)
-git remote set-url origin https://<username>:<token>@github.com/<owner>/<repo>.git
-```
+**⚠ DEPRECATED** — GitHub no longer accepts token-embedded URLs for git operations (`remote: Invalid username or token. Password authentication is not supported for Git operations.`). Use the credential store method above instead. This alternative is kept for reference only.
 
 **Step 3: Configure git identity**
 
@@ -178,6 +181,8 @@ echo "<THEIR_TOKEN>" | gh auth login --with-token
 gh auth setup-git
 ```
 
+> ⚠ The token **must** include the `read:org` scope. `gh auth login --with-token` validates this scope even for personal repos and will reject a token that lacks it with: `error validating token: missing required scope 'read:org'`. If your token doesn't have `read:org`, regenerate it at https://github.com/settings/tokens or fall back to Method 1 (git credential store).
+
 ### Verify
 
 ```bash
@@ -245,3 +250,5 @@ fi
 | Credentials not persisting | Check `git config --global credential.helper` — must be `store` or `cache` |
 | Multiple GitHub accounts | Use SSH with different keys per host alias in `~/.ssh/config`, or per-repo credential URLs |
 | `gh: command not found` + no sudo | Use git-only Method 1 above — no installation needed |
+| `error validating token: missing required scope 'read:org'` | Token lacks the `read:org` scope. Regenerate it with `read:org` checked, or skip `gh auth login` and use git credential store directly (Method 1, Step 2) |
+| `remote: Invalid username or token. Password authentication is not supported` | Token-embedded URLs (`https://user:token@github.com/...`) are deprecated by GitHub. Use `git credential approve` or `~/.git-credentials` instead |

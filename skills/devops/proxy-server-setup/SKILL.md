@@ -314,6 +314,45 @@ Then on your phone or any device, open the URL in a browser to download/access t
 - **Verify both ends** — Always check local (`curl http://127.0.0.1:18888/FILE`) **and** tunnel (`curl https://TUNNEL.trycloudflare.com/FILE`). A 502 tunnel with a working local server means cloudflared needs restarting.
 - **No uptime guarantee** — Trycloudflare quick tunnels are best-effort with no SLA. For production, register a Cloudflare account and create a named tunnel (see [Cloudflare docs](https://developers.cloudflare.com/cloudflare-one/connections/connect-apps)).
 
+### Full Restart Sequence (after session disconnect)
+
+When the user says the tunnel URL is inaccessible, the full recovery sequence is:
+
+```bash
+# 1. Kill stale HTTP server on 18888
+fuser -k 18888/tcp 2>/dev/null
+
+# 2. Kill stale cloudflared
+pkill -f cloudflared 2>/dev/null
+
+# 3. Start HTTP server
+cd /home/ubuntu && python3 -m http.server 18888 &
+
+# 4. Wait for server to be ready
+sleep 1
+
+# 5. Verify local server
+curl -s --connect-timeout 5 http://127.0.0.1:18888/ 2>&1 | head -1
+
+# 6. Start cloudflared tunnel (capture URL from output)
+/tmp/cloudflared tunnel --url http://127.0.0.1:18888 --no-autoupdate &
+sleep 8
+
+# 7. Extract the tunnel URL from cloudflared logs
+#    URL pattern: https://RANDOM-WORDS.trycloudflare.com
+
+# 8. Verify public access
+curl -s --connect-timeout 10 https://THE-URL.trycloudflare.com/FILE
+```
+
+**One-liner** (for quick recovery after user reports 404):
+```bash
+fuser -k 18888/tcp 2>/dev/null; pkill -f cloudflared 2>/dev/null; sleep 1
+cd /home/ubuntu && python3 -m http.server 18888 &
+sleep 2 && /tmp/cloudflared tunnel --url http://127.0.0.1:18888 --no-autoupdate &
+sleep 10 && echo "New tunnel URL in cloudflared output above"
+```
+
 ## Client Download Links
 
 - **Windows**: [v2rayN](https://github.com/2dust/v2rayN/releases)
