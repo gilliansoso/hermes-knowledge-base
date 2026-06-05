@@ -1,1 +1,13 @@
 [2026-06-04] Syncing skills...
+[main bbb7640] skills: daily sync 2026-06-04
+ 9 files changed, 587 insertions(+), 23 deletions(-)
+ create mode 100644 scripts/sync-2026-06-04.log
+ create mode 100644 skills/devops/auto-experience-doc/SKILL.md
+ create mode 100644 skills/devops/auto-experience-doc/references/wechat-gateway-setup.md
+ create mode 100644 skills/social-media/chinese-messaging-gateway/SKILL.md
+ create mode 100644 skills/social-media/chinese-messaging-gateway/references/qq-bot.md
+ create mode 100644 skills/social-media/chinese-messaging-gateway/references/weixin-wechat.md
+To https://github.com/gilliansoso/hermes-knowledge-base.git
+   0097c81..bbb7640  main -> main
+✓ Pushed 2026-06-04 skill sync
+[2026-06-04] Done
