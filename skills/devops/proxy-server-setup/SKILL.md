@@ -84,7 +84,7 @@ sudo systemctl daemon-reload
 sudo systemctl restart xray
 ```
 
-### 6. Verify the Service
+### Verify the Service
 
 ```bash
 # Check status
@@ -97,6 +97,43 @@ ss -tlnp | grep 443
 timeout 3 bash -c 'echo | openssl s_client -connect 127.0.0.1:443 -servername apple.com 2>/dev/null' | openssl x509 -noout -subject
 # Expected: CN = apple.com
 ```
+
+### 6.5 Full Diagnostic Checklist (When Proxy Stops Working)
+
+Run this on the server via SSH to triage connectivity issues:
+
+```bash
+echo '=== XRAY STATUS ==='
+sudo systemctl status xray --no-pager 2>&1 | head -15
+echo '=== PORT CHECK ==='
+sudo ss -tlnp | grep 443
+echo '=== YOUTUBE DIRECT (server, no proxy) ==='
+curl -s -o /dev/null -w 'HTTP %{http_code} in %{time_total}s' --connect-timeout 10 https://www.youtube.com 2>&1
+echo ''
+echo '=== YOUTUBE via SOCKS5 proxy ==='
+curl -s -o /dev/null -w 'HTTP %{http_code} in %{time_total}s' --connect-timeout 10 --socks5 127.0.0.1:1080 https://www.youtube.com 2>&1
+echo ''
+echo '=== FULL CONFIG ==='
+sudo cat /usr/local/etc/xray/config.json | python3 -m json.tool
+echo '=== RECENT LOGS ==='
+sudo journalctl -u xray --no-pager -n 30
+echo '=== LISTENING PORTS ==='
+sudo ss -tlnp
+echo '=== FIREWALL ==='
+sudo iptables -L -n | head -20
+```
+
+#### Interpreting Results
+
+| Symptom | Likely Cause | Fix |
+|---------|-------------|-----|
+| `HTTP 000` on SOCKS5, `HTTP 200` direct | No SOCKS5/HTTP inbound configured | Client is using VLESS directly; no SOCKS5 port exists. Normal unless user expects local proxy. |
+| Xray not running | Service crashed or config error | `sudo journalctl -u xray --no-pager -n 50` for errors, fix config, `sudo systemctl restart xray` |
+| Port 443 not listening | Nobody user can't bind low port, or systemd override missing | See Step 5 — ensure User=root override exists |
+| Xray shows `changed on disk` warning | Config modified but daemon not reloaded | `sudo systemctl daemon-reload && sudo systemctl restart xray` |
+| Direct YouTube fails from server | IP blocked by Google | Out of scope for Xray fix — consider different VPS IP or CDN relay |
+
+**Routing rules missing**: A bare VLESS+REALITY config with no `routing` section sends ALL traffic directly (`freedom` outbound). This means the proxy works as a tunnel but doesn't do split tunneling. If the client shows `[direct]` for all domains and YouTube is slow/blocked, the issue is usually on the **client side** — check the client's routing rules, not the server.
 
 ### 7. Generate Client Configs
 
@@ -358,3 +395,7 @@ sleep 10 && echo "New tunnel URL in cloudflared output above"
 - **Windows**: [v2rayN](https://github.com/2dust/v2rayN/releases)
 - **iPhone/iPad**: [Shadowrocket](https://apps.apple.com/app/shadowrocket/id932747118) (App Store)
 - **macOS/Linux**: [Nekoray](https://github.com/MatsuriDayo/nekoray), [v2rayA](https://github.com/v2rayA/v2rayA), or [sing-box](https://github.com/SagerNet/sing-box)
+
+## Appendix
+
+- **SSH key transfer**: See `references/ssh-key-transfer-pitfalls.md` for reliable methods to receive and write PEM keys from users.
