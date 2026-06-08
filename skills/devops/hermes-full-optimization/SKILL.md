@@ -190,6 +190,52 @@ Hindsight 自动管理嵌入式 PostgreSQL，无需 Docker 或单独 PG 服务�
 
 ## Step 5: 成本控制精细化
 
+### 5a. 免费模型优先策略
+
+主模型应优先使用免费额度模型（如 `owl-alpha:free`、`glm-4-flash`、`qwen3-coder:free`），仅在复杂推理任务时切换到付费模型。用户可在会话中用 `-m` 参数临时切换：
+
+```bash
+hermes -m glm-4-flash    # 简单任务，零成本
+hermes                    # 默认 owl-alpha（免费）
+hermes -m deepseek/deepseek-v4-flash  # 复杂任务，按需付费
+```
+
+**按任务类型路由模型**是最大化免费额度的关键：70% 的简单查询/状态检查走免费模型，只有 30% 复杂任务走付费模型，长期可降低 50%+ token 消耗。
+
+### 5b. System Prompt 瘦身
+
+SOUL.md 和 system prompt 中的固定内容（角色描述、行为规则、技能列表）在每个请求中重复发送，是最大的固定开销。
+
+**优化方法**：
+- SOUL.md 控制在 700 字节以内（去掉冗余描述、emoji 装饰、重复规则）
+- 合并多个检查命令为一次 SSH/Python 调用，减少 tool call 次数
+- 减少不必要的 skill 加载——98 个 skill 的描述列表在 system prompt 中占空间
+
+### 5c. Memory 与上下文收紧
+
+```bash
+hermes config set memory.memory_char_limit 1500    # 默认 2200，收紧减少注入
+hermes config set memory.user_char_limit 800       # 默认 1375
+hermes config set agent.max_turns 80               # 默认 150，防止长对话膨胀
+```
+
+### 5d. 压缩配置调优
+
+```yaml
+compression:
+  enabled: true
+  threshold: 0.4    # 默认 0.5，更早触发压缩
+  target_ratio: 0.2
+```
+
+### 5e. 用户行为建议
+
+- **及时 `/reset`**：任务完成后重置会话，避免上下文膨胀。300+ 消息的会话可烧 3M+ tokens
+- **不相关话题用 `/new`**：每个话题开新 session，避免无关上下文累积
+- 说"直接做"时跳过分析过程，减少输出 token
+
+旧版 5 步（delegation 路由 + 成本显示）：
+
 将子任务 delegation 从主模型路由到免费模型：
 
 ```bash

@@ -98,7 +98,28 @@ timeout 3 bash -c 'echo | openssl s_client -connect 127.0.0.1:443 -servername ap
 # Expected: CN = apple.com
 ```
 
-### 6.5 Full Diagnostic Checklist (When Proxy Stops Working)
+### 6.5 SSH Private Key Handling (When User Provides Key for Server Access)
+
+**Context**: User may need to provide an SSH private key for the agent to access the proxy server for diagnostics. Handle with care.
+
+**Reliable write method**: Use `cat > file << 'KEYEOF'` heredoc via `terminal()`. The `write_file()` tool may corrupt PEM keys due to whitespace/formatting issues. Heredoc preserves exact content.
+
+```bash
+cat > /home/ubuntu/.ssh/server-key.pem << 'KEYEOF'
+-----BEGIN RSA PRIVATE KEY-----
+... (user pastes content) ...
+-----END RSA PRIVATE KEY-----
+KEYEOF
+chmod 600 /home/ubuntu/.ssh/server-key.pem
+```
+
+**Cleanup**: Always remove the key from disk after use. `rm -f` may be blocked by security approval — if so, tell the user to manually delete it.
+
+**PITFALL**: Do NOT paste keys into the terminal tool's inline string with `\n` escape sequences — the key line breaks get corrupted. Cat heredoc is the only reliable method.
+
+**PITFALL**: Security approval required for key file write AND key file deletion. Both may be blocked. Have a fallback: if write is blocked, ask user to SSH in themselves and run diagnostic commands, then paste output.
+
+### 6.6 Full Diagnostic Checklist (When Proxy Stops Working)
 
 Run this on the server via SSH to triage connectivity issues:
 
