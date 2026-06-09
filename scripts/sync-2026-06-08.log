@@ -1,1 +1,10 @@
 [2026-06-08] Syncing skills...
+[main 99a4033] skills: daily sync 2026-06-08
+ 7 files changed, 292 insertions(+), 17 deletions(-)
+ create mode 100644 scripts/sync-2026-06-08.log
+ create mode 100644 skills/research/research-report-publish/SKILL.md
+ create mode 100644 skills/research/research-report-publish/references/pdf_generation.md
+To https://github.com/gilliansoso/hermes-knowledge-base.git
+   2103f41..99a4033  main -> main
+✓ Pushed 2026-06-08 skill sync
+[2026-06-08] Done
