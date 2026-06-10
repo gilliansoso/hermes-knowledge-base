@@ -1,9 +1,9 @@
 {
-  "last_report_path": null,
-  "last_run_at": "2026-06-03T03:51:00.234799+00:00",
-  "last_run_duration_seconds": null,
-  "last_run_summary": "deferred first run — curator seeded, will run after one interval; use `hermes curator run --dry-run` to preview now",
+  "last_report_path": "/home/ubuntu/.hermes/logs/curator/20260610-040123",
+  "last_run_at": "2026-06-10T04:01:23.263772+00:00",
+  "last_run_duration_seconds": 16.221931,
+  "last_run_summary": "auto: no changes; llm: skill_list\n{\"category\": \"github\"}",
   "last_run_summary_shown_at": null,
   "paused": false,
-  "run_count": 0
+  "run_count": 1
 }
