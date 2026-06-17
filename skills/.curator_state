@@ -1,9 +1,9 @@
 {
-  "last_report_path": "/home/ubuntu/.hermes/logs/curator/20260610-040123",
-  "last_run_at": "2026-06-10T04:01:23.263772+00:00",
-  "last_run_duration_seconds": 16.221931,
-  "last_run_summary": "auto: no changes; llm: skill_list\n{\"category\": \"github\"}",
+  "last_report_path": "/home/ubuntu/.hermes/logs/curator/20260617-045630",
+  "last_run_at": "2026-06-17T04:56:30.245969+00:00",
+  "last_run_duration_seconds": 10.205499,
+  "last_run_summary": "auto: no changes; llm: skill_list\n{\"category\": \"hermes-agent\"}",
   "last_run_summary_shown_at": null,
   "paused": false,
-  "run_count": 1
+  "run_count": 2
 }
