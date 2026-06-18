@@ -319,6 +319,17 @@ ss -tlnp
 # Nothing unexpected
 ```
 
+## 9.8 Full Security Audit & Hardening
+
+For a comprehensive security audit and hardening workflow (beyond the proxy-specific steps above), see `references/security-hardening-pitfalls.md`. It covers:
+
+- SSH hardening (password auth, user restrictions, cipher limits, Ubuntu 24.04 service name pitfall)
+- fail2ban tuning (aggressive jail, shorter findtime)
+- Kernel parameter hardening (SYN flood, source routing, ASLR, ptrace)
+- PAM password complexity policy
+- Security audit quick-check commands
+- Common pitfalls: `ssh` vs `sshd` service name, dpkg interrupted state, iptables-persistent noninteractive config
+
 ## Security Checklist Summary
 
 | Step | What | Key Command |
@@ -420,3 +431,4 @@ sleep 10 && echo "New tunnel URL in cloudflared output above"
 ## Appendix
 
 - **SSH key transfer**: See `references/ssh-key-transfer-pitfalls.md` for reliable methods to receive and write PEM keys from users.
+- **Security hardening pitfalls**: See `references/security-hardening-pitfalls.md` for the full security audit and hardening workflow, including SSH/kernel/PAM hardening and common Ubuntu 24.04 pitfalls.
