@@ -1,17 +1,18 @@
-# Hermes Knowledge Base
+# v2rayN
 
-Automated knowledge repository for Hermes Agent.
+A GUI client for Windows, Linux and macOS, support [Xray](https://github.com/XTLS/Xray-core)
+and [sing-box](https://github.com/SagerNet/sing-box)
+and [others](https://github.com/2dust/v2rayN/wiki/List-of-supported-cores)
 
-## Structure
+[![GitHub commit activity](https://img.shields.io/github/commit-activity/m/2dust/v2rayN)](https://github.com/2dust/v2rayN/commits/master)
+[![CodeFactor](https://www.codefactor.io/repository/github/2dust/v2rayn/badge)](https://www.codefactor.io/repository/github/2dust/v2rayn)
+[![GitHub Releases](https://img.shields.io/github/downloads/2dust/v2rayN/latest/total?logo=github)](https://github.com/2dust/v2rayN/releases)
+[![Chat on Telegram](https://img.shields.io/badge/Chat%20on-Telegram-brightgreen.svg)](https://t.me/v2rayn)
 
-```
-skills/          ← Skill files synced from ~/.hermes/skills/ (auto-daily)
-experience/      ← Post-task experience/lesson documents
-scripts/         ← Automation scripts for sync and generation
-```
+## How to use
 
-## Purpose
+Read the [Wiki](https://github.com/2dust/v2rayN/wiki) for details.
 
-- **Skills**: Daily backup of all Hermes Agent SKILL.md files
-- **Experience**: Generated after each task session — captures learnings, decisions, and insights
+## Telegram Channel
 
+[github_2dust](https://t.me/github_2dust)
