@@ -168,6 +168,19 @@
     "use_count": 0,
     "view_count": 0
   },
+  "chinese-futures-data": {
+    "archived_at": null,
+    "created_at": "2026-06-21T10:14:36.668832+00:00",
+    "created_by": "agent",
+    "last_patched_at": null,
+    "last_used_at": "2026-06-21T10:45:15.869741+00:00",
+    "last_viewed_at": "2026-06-21T10:45:15.862796+00:00",
+    "patch_count": 0,
+    "pinned": false,
+    "state": "active",
+    "use_count": 1,
+    "view_count": 1
+  },
   "chinese-messaging-gateway": {
     "archived_at": null,
     "created_at": "2026-06-03T11:00:27.240845+00:00",
