@@ -70,9 +70,45 @@ Check that the repo on GitHub shows the new document:
 4. **Topic too vague** — "bug-fix" or "update" doesn't help future you. Use descriptive topics.
 5. **Skipping on short sessions** — Even a 5-minute session with a useful config tweak deserves a doc. The smallest learnings compound fastest.
 
+## Push Failure Recovery
+
+### "rejected (fetch first)" — remote has diverged
+
+This happens when another device/session pushed work while you had unpushed commits. **Never force push** — the remote may have valuable work.
+
+```bash
+# Step 1: commit any uncommitted changes first
+cd ~/.hermes-kb
+git add -A
+git commit -m "changes before sync"
+
+# Step 2: pull with rebase (linear history)
+git pull --rebase origin main
+
+# Step 3: push
+git push origin main
+```
+
+If `git pull --rebase` fails with "Your index contains uncommitted changes":
+→ Run `git add -A && git commit -m "..."` first, then retry.
+
+### Git status reading guide
+
+| Signal | Meaning | Action |
+|---|---|---|
+| ahead of origin/main by N commits | Local has unpushed commits | `git push` |
+| rejected (fetch first) | Remote also has new commits | pull --rebase then push |
+| ` M <file>` | Tracked, unstaged change | `git add` + commit |
+| `?? <file>` | Untracked file | `git add -A` includes it |
+| `A  <file>` | Staged, uncommitted | `git commit` |
+
 ## Reference Files
 
 - `references/wechat-gateway-setup.md` — WeChat iLink Bot QR login flow for headless servers (from 2026-06-03 setup session)
+
+## Related Artifacts
+
+- `~/.hermes-kb/scripts/sync-skills.sh` — Daily cron script that pushes to same repo. Its git change-detection logic uses `git diff --quiet` after rsync; when the log file it redirects into is a tracked file, this can shadow the real skill-sync changes. If the script reports "No changes since last sync" but has a dirty git status, the log file self-modification is the probable cause.
 
 ## Verification Checklist
 
