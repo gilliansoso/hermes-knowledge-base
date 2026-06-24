@@ -1,0 +1,123 @@
+{
+  "jobs": [
+    {
+      "id": "fe89d00cee16",
+      "name": "system-watchdog",
+      "prompt": "Run system diagnostics and report: check disk usage (df -h), memory (free -h), GPU status (nvidia-smi if available), CPU load (uptime), and top 5 processes by memory. Only alert if any metric is critical (disk > 90%, memory < 10%, GPU errors, load > 4x CPU count). If everything is healthy, stay silent. Deliver as a concise table.",
+      "skills": [],
+      "skill": null,
+      "model": "glm-4-flash",
+      "provider": "zai",
+      "base_url": null,
+      "script": null,
+      "no_agent": false,
+      "context_from": null,
+      "schedule": {
+        "kind": "interval",
+        "minutes": 120,
+        "display": "every 120m"
+      },
+      "schedule_display": "every 120m",
+      "repeat": {
+        "times": null,
+        "completed": 248
+      },
+      "enabled": true,
+      "state": "scheduled",
+      "paused_at": null,
+      "paused_reason": null,
+      "created_at": "2026-06-03T05:08:30.207423+00:00",
+      "next_run_at": "2026-06-24T07:43:42.416358+00:00",
+      "last_run_at": "2026-06-24T05:43:42.416358+00:00",
+      "last_status": "ok",
+      "last_error": null,
+      "last_delivery_error": null,
+      "deliver": "local",
+      "origin": null,
+      "enabled_toolsets": [
+        "terminal"
+      ],
+      "workdir": null,
+      "profile": null
+    },
+    {
+      "id": "054c3ea98b39",
+      "name": "arxiv-daily-digest",
+      "prompt": "Search arXiv for the latest AI/ML papers from the last 24 hours. Categories: cs.AI, cs.LG, cs.CL, cs.CV. Pick the top 5 most interesting papers. For each paper give: title, authors, a 2-sentence summary, and why it matters for an AI/ML developer. Format as a clean numbered list with links.",
+      "skills": [],
+      "skill": null,
+      "model": "glm-4-flash",
+      "provider": "zai",
+      "base_url": null,
+      "script": null,
+      "no_agent": false,
+      "context_from": null,
+      "schedule": {
+        "kind": "cron",
+        "expr": "0 8 * * *",
+        "display": "0 8 * * *"
+      },
+      "schedule_display": "0 8 * * *",
+      "repeat": {
+        "times": null,
+        "completed": 20
+      },
+      "enabled": true,
+      "state": "scheduled",
+      "paused_at": null,
+      "paused_reason": null,
+      "created_at": "2026-06-03T05:08:35.930952+00:00",
+      "next_run_at": "2026-06-24T08:00:00+00:00",
+      "last_run_at": "2026-06-23T08:01:05.882237+00:00",
+      "last_status": "ok",
+      "last_error": null,
+      "last_delivery_error": null,
+      "deliver": "local",
+      "origin": null,
+      "enabled_toolsets": [
+        "web"
+      ],
+      "workdir": null,
+      "profile": null
+    },
+    {
+      "id": "8f6721381720",
+      "name": "daily-skill-sync",
+      "prompt": "Run the daily skills sync script. This is automated \u2014 just run the script and report the result. The script handles git add/commit/push if there are changes.",
+      "skills": [],
+      "skill": null,
+      "model": null,
+      "provider": null,
+      "base_url": null,
+      "script": "sync-skills.sh",
+      "no_agent": false,
+      "context_from": null,
+      "schedule": {
+        "kind": "cron",
+        "expr": "0 6 * * *",
+        "display": "0 6 * * *"
+      },
+      "schedule_display": "0 6 * * *",
+      "repeat": {
+        "times": null,
+        "completed": 20
+      },
+      "enabled": true,
+      "state": "scheduled",
+      "paused_at": null,
+      "paused_reason": null,
+      "created_at": "2026-06-03T10:42:06.192442+00:00",
+      "next_run_at": "2026-06-24T06:00:00+00:00",
+      "last_run_at": "2026-06-23T06:00:54.998321+00:00",
+      "last_status": "ok",
+      "last_error": null,
+      "last_delivery_error": null,
+      "deliver": "local",
+      "origin": null,
+      "enabled_toolsets": null,
+      "workdir": null,
+      "profile": null
+    }
+  ],
+  "updated_at": "2026-06-24T05:43:42.416550+00:00"
+}
