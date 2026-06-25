@@ -172,6 +172,56 @@ You can configure the gateway to receive cross-profile Kanban task notifications
 - Create follow-up tasks assigned to yourself — assign to the right specialist.
 - Complete a task you didn't actually finish. Block it instead.
 
+## Codex Lane (Delegating to Codex CLI)
+
+When a coding task is too large to do directly, you can spawn Codex CLI as an isolated implementation lane while keeping task lifecycle ownership yourself.
+
+**Ownership rules:**
+1. Hermes (you) owns the Kanban lifecycle — Codex must never call `kanban_complete`, `kanban_block`, etc.
+2. Hermes owns final acceptance — treat Codex commits/diffs as untrusted patches until reviewed
+3. Hermes owns test execution — repeat required verification from Hermes after Codex exits
+4. Hermes owns cleanup — kill stuck processes and remove temporary worktrees
+
+**Worktree isolation (required):**
+```bash
+TASK_ID="${HERMES_KANBAN_TASK:-t_manual}"
+REPO="/path/to/repo"
+BASE="$(git -C "$REPO" rev-parse --abbrev-ref HEAD)"
+BRANCH="codex/${TASK_ID}/$(date -u +%Y%m%d%H%M%S)"
+WORKTREE="/tmp/${TASK_ID}-codex-lane"
+
+git -C "$REPO" fetch --all --prune
+git -C "$REPO" worktree add -b "$BRANCH" "$WORKTREE" "$BASE"
+
+# Run Codex in the worktree
+terminal(command="codex exec --full-auto '$(cat /tmp/codex_prompt.md)'", workdir="$WORKTREE", background=true, pty=true, notify_on_complete=true)
+
+# Monitor and reconcile
+process(action="poll", session_id="<id>")
+```
+
+**Reconciliation checklist:**
+- [ ] `git status` shows only expected files
+- [ ] No secrets, credentials, or unrelated artifacts
+- [ ] Copied or cherry-picked accepted commits to the main workspace
+- [ ] Ran canonical tests independently
+- [ ] Cleaned up: `git worktree remove "$WORKTREE"` and `git branch -D "$BRANCH"`
+
+**Metadata schema:**
+```json
+{
+  "codex_lane": {
+    "used": true,
+    "worktree": "/path/to/codex/worktree",
+    "result": "accepted | rejected | partial | timed_out",
+    "accepted_commits": ["<sha>"],
+    "rejected_reason": "concrete reason if not accepted"
+  }
+}
+```
+
+Full reference: `references/codex-lane-prompt.md` (the Codex prompt template).
+
 ## Pitfalls
 
 **Task state can change between dispatch and your startup.** Between when the dispatcher claimed and when your process actually booted, the task may have been blocked, reassigned, or archived. Always `kanban_show` first. If it reports `blocked` or `archived`, stop — you shouldn't be running.

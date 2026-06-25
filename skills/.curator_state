@@ -1,8 +1,8 @@
 {
-  "last_report_path": "/home/ubuntu/.hermes/logs/curator/20260617-045630",
+  "last_report_path": "/home/ubuntu/.hermes/logs/curator/20260624-055442",
   "last_run_at": "2026-06-24T05:54:42.459811+00:00",
-  "last_run_duration_seconds": 10.205499,
-  "last_run_summary": "auto: no changes",
+  "last_run_duration_seconds": 2427.256233,
+  "last_run_summary": "auto: no changes; llm: ---\n\n## Curator Summary\n\nProcessed **7 umbrella clusters** absorbing **21 skills total** (16 consolidations + 5 prunings).\n\n### Clusters Processed\n\n**1. GitHub Workflows** (5→1 umbrella: `github-workflows`)\n- Absorbed: `github-auth`, `githu…\narchived 20 skill(s):\n  • codex → claude-code\n  • kanban-codex-lane → kanban-worker\n  • opencode → claude-code\n  • plan → writing-plans\n  • apple-notes — pruned (stale)\n  • apple-reminders — pruned (stale)\n  • baoyu-article-illustrator — pruned (stale)\n  • baoyu-comic — pruned (stale)\n  • baoyu-infographic — pruned (stale)\n  • findmy — pruned (stale)\n  … and 10 more\nfull report: hermes curator status\nkeep an umbrella stable: hermes curator pin claude-code",
   "last_run_summary_shown_at": null,
   "paused": false,
   "run_count": 3

@@ -743,3 +743,67 @@ Use `/context` in interactive mode to see a colored grid of context usage. Key t
 8. **Report results to user** — after completion, summarize what Claude did and what changed
 9. **Don't kill slow sessions** — Claude may be doing multi-step work; check progress instead
 10. **Use `--allowedTools`** — restrict capabilities to what the task actually needs
+
+---
+
+## Other Coding Agents
+
+The same orchestration patterns above apply to other external coding agent CLIs. Key differences per tool:
+
+### Codex CLI (OpenAI)
+
+Install: `npm install -g @openai/codex`
+
+Auth: `OPENAI_API_KEY` env var or Codex CLI OAuth at `~/.codex/auth.json`.
+
+**Must run inside a git repository** — Codex refuses to run outside one.
+
+**One-shot:**
+```
+terminal(command="codex exec 'Add dark mode toggle to settings'", workdir="~/project", pty=true)
+```
+
+**Key flags:**
+| Flag | Effect |
+|------|--------|
+| `exec "prompt"` | One-shot execution, exits when done |
+| `--full-auto` | Sandboxed but auto-approves file changes in workspace |
+| `--yolo` | No sandbox, no approvals (fastest, dangerous) |
+
+**Rules:**
+1. Always use `pty=true` — Codex hangs without a PTY
+2. Git repo required — use `mktemp -d && git init` for scratch
+3. Use `exec` for one-shots, background for long tasks
+4. `--full-auto` for building, `--yolo` only for trusted contexts
+
+### OpenCode CLI (Provider-agnostic)
+
+Install: `npm i -g opencode-ai@latest` or `brew install anomalyco/tap/opencode`
+
+Auth: `opencode auth login` or set provider env vars (OPENROUTER_API_KEY, etc.)
+
+**One-shot (no pty needed):**
+```
+terminal(command="opencode run 'Add retry logic to API calls'", workdir="~/project")
+```
+
+**Interactive (background pty):**
+```
+terminal(command="opencode", workdir="~/project", background=true, pty=true)
+# Send prompts via process(action="submit", ...)
+```
+
+**Key flags:**
+| Flag | Use |
+|------|-----|
+| `run 'prompt'` | One-shot execution and exit |
+| `-c` / `--continue` | Continue last session |
+| `-f <path>` | Attach file(s) to the message |
+| `--model provider/model` | Force specific model |
+| `--thinking` | Show model thinking blocks |
+
+**Pitfalls:**
+- `/exit` is NOT valid in OpenCode — use Ctrl+C (`\x03`) or `process(action="kill")`
+- `opencode run` does NOT need pty; interactive TUI sessions need pty
+- Enter may need pressing twice in TUI
+- Check binary resolution: `which -a opencode`

@@ -71,12 +71,11 @@ Pitfalls:
 ```bash
 # Pandoc — universal document converter
 sudo apt install -y pandoc    # Debian/Ubuntu
-# or brew install pandoc
 
-# Scrapling — web scraping library (install via Hermes skills hub)
+# Scrapling — web scraping library
 echo "y" | hermes skills install "official/research/scrapling"
 
-# Marker-PDF — PDF to markdown (Python)
+# Marker-PDF — PDF to markdown
 pip install marker-pdf
 ```
 
@@ -84,6 +83,67 @@ These tools enable:
 - `pandoc` — Convert between markdown, PDF, HTML, docx, LaTeX, etc.
 - `scrapling` — Advanced web scraping with stealth mode
 - `marker-pdf` — High-quality PDF text extraction with layout preservation
+
+### Scrapling Stealth Mode (Enhanced)
+
+For sites behind Cloudflare or JS-dynamic rendering:
+
+```bash
+# Install full Scrapling with Playwright
+pip install "scrapling[all]"
+python3 -m playwright install chromium
+```
+
+Three modes:
+```python
+from scrapling.fetchers import Fetcher, DynamicFetcher, StealthyFetcher
+Fetcher.get(url)                    # HTTP mode — fastest, static pages
+DynamicFetcher.fetch(url)           # JS-rendered pages
+StealthyFetcher.fetch(url, ...)     # Cloudflare bypass
+```
+
+A reusable fetch script at `~/.hermes/scripts/scrapling-fetch.py`:
+
+```bash
+python3 ~/.hermes/scripts/scrapling-fetch.py <url>             # HTTP mode
+python3 ~/.hermes/scripts/scrapling-fetch.py <url> --stealth   # Cloudflare bypass
+python3 ~/.hermes/scripts/scrapling-fetch.py <url> --dynamic   # JS rendering
+python3 ~/.hermes/scripts/scrapling-fetch.py <url> --css-selector '.content'  # Extract specific content
+```
+
+Full reference: `references/scrapling-setup.md`
+
+### Cost Control with Token Analytics
+
+Enable token usage and cost display:
+```bash
+hermes config set show_token_analytics true
+hermes config set show_cost true
+```
+
+Compression tuning to limit token burn:
+```yaml
+compression:
+  enabled: true
+  threshold: 0.4     # Trigger compression earlier (default 0.5)
+  target_ratio: 0.2
+```
+
+### Benchmarking
+
+Run the benchmark script to verify configuration effectiveness:
+```bash
+~/.hermes/hermes-agent/venv/bin/python3 ~/.hermes/scripts/benchmark.py [--count N]
+```
+
+Tests 10 standard Q&A prompts for response speed and availability. Results saved to `~/.hermes/benchmark-report.json`. Default 5 rounds; use `--count 20` for thorough testing.
+
+### Disk Cleanup Plugin
+
+Enable automatic temp file cleanup:
+```bash
+hermes plugins enable disk-cleanup
+```
 
 ## Step 4: Memory Upgrade
 

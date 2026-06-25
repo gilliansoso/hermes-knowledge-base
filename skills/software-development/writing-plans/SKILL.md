@@ -295,3 +295,18 @@ Frequent commits
 ```
 
 **A good plan makes implementation obvious.**
+
+---
+
+## Plan Mode (No-Execution Planning)
+
+When the user asks for a plan **without** execution (e.g. `/plan` command, or "plan this first"), use this mode instead of the full SDD workflow:
+
+1. **Planning only** — do not implement code, edit project files (except the plan file), or run mutating commands
+2. **Inspect** the repo with read-only tools if needed
+3. **Write a plan** to `.hermes/plans/YYYY-MM-DD_HHMMSS-<slug>.md`
+4. **Include**: Goal, assumptions, approach, step-by-step tasks, files to change, verification steps, risks
+
+Save the plan with `write_file` — the `.hermes/plans/` path is backend-aware.
+
+After saving, offer to execute using `subagent-driven-development` (if the plan has 2+ tasks) or execute directly for a single-task plan.
