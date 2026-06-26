@@ -1,1 +1,164 @@
 [2026-06-25] Syncing skills...
+[main 7c10b64] skills: daily sync 2026-06-25
+ 164 files changed, 1159 insertions(+), 5849 deletions(-)
+ create mode 100644 scripts/sync-2026-06-25.log
+ delete mode 100644 skills/apple/apple-notes/SKILL.md
+ delete mode 100644 skills/apple/apple-reminders/SKILL.md
+ delete mode 100644 skills/apple/findmy/SKILL.md
+ delete mode 100644 skills/apple/imessage/SKILL.md
+ delete mode 100644 skills/apple/macos-computer-use/SKILL.md
+ delete mode 100644 skills/autonomous-ai-agents/codex/SKILL.md
+ delete mode 100644 skills/autonomous-ai-agents/kanban-codex-lane/SKILL.md
+ delete mode 100644 skills/autonomous-ai-agents/opencode/SKILL.md
+ delete mode 100644 skills/creative/baoyu-article-illustrator/PORT_NOTES.md
+ delete mode 100644 skills/creative/baoyu-article-illustrator/SKILL.md
+ delete mode 100644 skills/creative/baoyu-article-illustrator/prompts/system.md
+ delete mode 100644 skills/creative/baoyu-comic/PORT_NOTES.md
+ delete mode 100644 skills/creative/baoyu-comic/SKILL.md
+ delete mode 100644 skills/creative/baoyu-infographic/PORT_NOTES.md
+ delete mode 100644 skills/creative/baoyu-infographic/SKILL.md
+ create mode 100644 skills/creative/baoyu-skills/SKILL.md
+ rename skills/creative/{baoyu-article-illustrator/references => baoyu-skills/references/article-illustrator}/palettes/macaron.md (100%)
+ rename skills/creative/{baoyu-article-illustrator/references => baoyu-skills/references/article-illustrator}/palettes/mono-ink.md (100%)
+ rename skills/creative/{baoyu-article-illustrator/references => baoyu-skills/references/article-illustrator}/palettes/neon.md (100%)
+ rename skills/creative/{baoyu-article-illustrator/references => baoyu-skills/references/article-illustrator}/palettes/warm.md (100%)
+ rename skills/creative/{baoyu-article-illustrator/references => baoyu-skills/references/article-illustrator}/prompt-construction.md (100%)
+ rename skills/creative/{baoyu-article-illustrator/references => baoyu-skills/references/article-illustrator}/style-presets.md (100%)
+ rename skills/creative/{baoyu-article-illustrator/references => baoyu-skills/references/article-illustrator}/styles.md (100%)
+ rename skills/creative/{baoyu-article-illustrator/references => baoyu-skills/references/article-illustrator}/styles/blueprint.md (100%)
+ rename skills/creative/{baoyu-article-illustrator/references => baoyu-skills/references/article-illustrator}/styles/chalkboard.md (100%)
+ rename skills/creative/{baoyu-article-illustrator/references => baoyu-skills/references/article-illustrator}/styles/editorial.md (100%)
+ rename skills/creative/{baoyu-article-illustrator/references => baoyu-skills/references/article-illustrator}/styles/elegant.md (100%)
+ rename skills/creative/{baoyu-article-illustrator/references => baoyu-skills/references/article-illustrator}/styles/fantasy-animation.md (100%)
+ rename skills/creative/{baoyu-article-illustrator/references => baoyu-skills/references/article-illustrator}/styles/flat-doodle.md (100%)
+ rename skills/creative/{baoyu-article-illustrator/references => baoyu-skills/references/article-illustrator}/styles/flat.md (100%)
+ rename skills/creative/{baoyu-article-illustrator/references => baoyu-skills/references/article-illustrator}/styles/ink-notes.md (100%)
+ rename skills/creative/{baoyu-article-illustrator/references => baoyu-skills/references/article-illustrator}/styles/intuition-machine.md (100%)
+ rename skills/creative/{baoyu-article-illustrator/references => baoyu-skills/references/article-illustrator}/styles/minimal.md (100%)
+ rename skills/creative/{baoyu-article-illustrator/references => baoyu-skills/references/article-illustrator}/styles/nature.md (100%)
+ rename skills/creative/{baoyu-article-illustrator/references => baoyu-skills/references/article-illustrator}/styles/notion.md (100%)
+ rename skills/creative/{baoyu-article-illustrator/references => baoyu-skills/references/article-illustrator}/styles/pixel-art.md (100%)
+ rename skills/creative/{baoyu-article-illustrator/references => baoyu-skills/references/article-illustrator}/styles/playful.md (100%)
+ rename skills/creative/{baoyu-article-illustrator/references => baoyu-skills/references/article-illustrator}/styles/retro.md (100%)
+ rename skills/creative/{baoyu-article-illustrator/references => baoyu-skills/references/article-illustrator}/styles/scientific.md (100%)
+ rename skills/creative/{baoyu-article-illustrator/references => baoyu-skills/references/article-illustrator}/styles/screen-print.md (100%)
+ rename skills/creative/{baoyu-article-illustrator/references => baoyu-skills/references/article-illustrator}/styles/sketch-notes.md (100%)
+ rename skills/creative/{baoyu-article-illustrator/references => baoyu-skills/references/article-illustrator}/styles/sketch.md (100%)
+ rename skills/creative/{baoyu-article-illustrator/references => baoyu-skills/references/article-illustrator}/styles/vector-illustration.md (100%)
+ rename skills/creative/{baoyu-article-illustrator/references => baoyu-skills/references/article-illustrator}/styles/vintage.md (100%)
+ rename skills/creative/{baoyu-article-illustrator/references => baoyu-skills/references/article-illustrator}/styles/warm.md (100%)
+ rename skills/creative/{baoyu-article-illustrator/references => baoyu-skills/references/article-illustrator}/styles/watercolor.md (100%)
+ rename skills/creative/{baoyu-article-illustrator/references => baoyu-skills/references/article-illustrator}/usage.md (100%)
+ rename skills/creative/{baoyu-article-illustrator/references => baoyu-skills/references/article-illustrator}/workflow.md (100%)
+ rename skills/creative/{baoyu-comic/references => baoyu-skills/references/comic}/analysis-framework.md (100%)
+ rename skills/creative/{baoyu-comic/references => baoyu-skills/references/comic}/art-styles/chalk.md (100%)
+ rename skills/creative/{baoyu-comic/references => baoyu-skills/references/comic}/art-styles/ink-brush.md (100%)
+ rename skills/creative/{baoyu-comic/references => baoyu-skills/references/comic}/art-styles/ligne-claire.md (100%)
+ rename skills/creative/{baoyu-comic/references => baoyu-skills/references/comic}/art-styles/manga.md (100%)
+ rename skills/creative/{baoyu-comic/references => baoyu-skills/references/comic}/art-styles/minimalist.md (100%)
+ rename skills/creative/{baoyu-comic/references => baoyu-skills/references/comic}/art-styles/realistic.md (100%)
+ rename skills/creative/{baoyu-comic/references => baoyu-skills/references/comic}/auto-selection.md (100%)
+ rename skills/creative/{baoyu-comic/references => baoyu-skills/references/comic}/base-prompt.md (100%)
+ rename skills/creative/{baoyu-comic/references => baoyu-skills/references/comic}/character-template.md (100%)
+ rename skills/creative/{baoyu-comic/references => baoyu-skills/references/comic}/layouts/cinematic.md (100%)
+ rename skills/creative/{baoyu-comic/references => baoyu-skills/references/comic}/layouts/dense.md (100%)
+ rename skills/creative/{baoyu-comic/references => baoyu-skills/references/comic}/layouts/four-panel.md (100%)
+ rename skills/creative/{baoyu-comic/references => baoyu-skills/references/comic}/layouts/mixed.md (100%)
+ rename skills/creative/{baoyu-comic/references => baoyu-skills/references/comic}/layouts/splash.md (100%)
+ rename skills/creative/{baoyu-comic/references => baoyu-skills/references/comic}/layouts/standard.md (100%)
+ rename skills/creative/{baoyu-comic/references => baoyu-skills/references/comic}/layouts/webtoon.md (100%)
+ rename skills/creative/{baoyu-comic/references => baoyu-skills/references/comic}/ohmsha-guide.md (100%)
+ rename skills/creative/{baoyu-comic/references => baoyu-skills/references/comic}/partial-workflows.md (100%)
+ rename skills/creative/{baoyu-comic/references => baoyu-skills/references/comic}/presets/concept-story.md (100%)
+ rename skills/creative/{baoyu-comic/references => baoyu-skills/references/comic}/presets/four-panel.md (100%)
+ rename skills/creative/{baoyu-comic/references => baoyu-skills/references/comic}/presets/ohmsha.md (100%)
+ rename skills/creative/{baoyu-comic/references => baoyu-skills/references/comic}/presets/shoujo.md (100%)
+ rename skills/creative/{baoyu-comic/references => baoyu-skills/references/comic}/presets/wuxia.md (100%)
+ rename skills/creative/{baoyu-comic/references => baoyu-skills/references/comic}/storyboard-template.md (100%)
+ rename skills/creative/{baoyu-comic/references => baoyu-skills/references/comic}/tones/action.md (100%)
+ rename skills/creative/{baoyu-comic/references => baoyu-skills/references/comic}/tones/dramatic.md (100%)
+ rename skills/creative/{baoyu-comic/references => baoyu-skills/references/comic}/tones/energetic.md (100%)
+ rename skills/creative/{baoyu-comic/references => baoyu-skills/references/comic}/tones/neutral.md (100%)
+ rename skills/creative/{baoyu-comic/references => baoyu-skills/references/comic}/tones/romantic.md (100%)
+ rename skills/creative/{baoyu-comic/references => baoyu-skills/references/comic}/tones/vintage.md (100%)
+ rename skills/creative/{baoyu-comic/references => baoyu-skills/references/comic}/tones/warm.md (100%)
+ rename skills/creative/{baoyu-comic/references => baoyu-skills/references/comic}/workflow.md (100%)
+ rename skills/creative/{baoyu-infographic/references => baoyu-skills/references/infographic}/analysis-framework.md (100%)
+ rename skills/creative/{baoyu-infographic/references => baoyu-skills/references/infographic}/base-prompt.md (100%)
+ rename skills/creative/{baoyu-infographic/references => baoyu-skills/references/infographic}/layouts/bento-grid.md (100%)
+ rename skills/creative/{baoyu-infographic/references => baoyu-skills/references/infographic}/layouts/binary-comparison.md (100%)
+ rename skills/creative/{baoyu-infographic/references => baoyu-skills/references/infographic}/layouts/bridge.md (100%)
+ rename skills/creative/{baoyu-infographic/references => baoyu-skills/references/infographic}/layouts/circular-flow.md (100%)
+ rename skills/creative/{baoyu-infographic/references => baoyu-skills/references/infographic}/layouts/comic-strip.md (100%)
+ rename skills/creative/{baoyu-infographic/references => baoyu-skills/references/infographic}/layouts/comparison-matrix.md (100%)
+ rename skills/creative/{baoyu-infographic/references => baoyu-skills/references/infographic}/layouts/dashboard.md (100%)
+ rename skills/creative/{baoyu-infographic/references => baoyu-skills/references/infographic}/layouts/dense-modules.md (100%)
+ rename skills/creative/{baoyu-infographic/references => baoyu-skills/references/infographic}/layouts/funnel.md (100%)
+ rename skills/creative/{baoyu-infographic/references => baoyu-skills/references/infographic}/layouts/hierarchical-layers.md (100%)
+ rename skills/creative/{baoyu-infographic/references => baoyu-skills/references/infographic}/layouts/hub-spoke.md (100%)
+ rename skills/creative/{baoyu-infographic/references => baoyu-skills/references/infographic}/layouts/iceberg.md (100%)
+ rename skills/creative/{baoyu-infographic/references => baoyu-skills/references/infographic}/layouts/isometric-map.md (100%)
+ rename skills/creative/{baoyu-infographic/references => baoyu-skills/references/infographic}/layouts/jigsaw.md (100%)
+ rename skills/creative/{baoyu-infographic/references => baoyu-skills/references/infographic}/layouts/linear-progression.md (100%)
+ rename skills/creative/{baoyu-infographic/references => baoyu-skills/references/infographic}/layouts/periodic-table.md (100%)
+ rename skills/creative/{baoyu-infographic/references => baoyu-skills/references/infographic}/layouts/story-mountain.md (100%)
+ rename skills/creative/{baoyu-infographic/references => baoyu-skills/references/infographic}/layouts/structural-breakdown.md (100%)
+ rename skills/creative/{baoyu-infographic/references => baoyu-skills/references/infographic}/layouts/tree-branching.md (100%)
+ rename skills/creative/{baoyu-infographic/references => baoyu-skills/references/infographic}/layouts/venn-diagram.md (100%)
+ rename skills/creative/{baoyu-infographic/references => baoyu-skills/references/infographic}/layouts/winding-roadmap.md (100%)
+ rename skills/creative/{baoyu-infographic/references => baoyu-skills/references/infographic}/structured-content-template.md (100%)
+ rename skills/creative/{baoyu-infographic/references => baoyu-skills/references/infographic}/styles/aged-academia.md (100%)
+ rename skills/creative/{baoyu-infographic/references => baoyu-skills/references/infographic}/styles/bold-graphic.md (100%)
+ rename skills/creative/{baoyu-infographic/references => baoyu-skills/references/infographic}/styles/chalkboard.md (100%)
+ rename skills/creative/{baoyu-infographic/references => baoyu-skills/references/infographic}/styles/claymation.md (100%)
+ rename skills/creative/{baoyu-infographic/references => baoyu-skills/references/infographic}/styles/corporate-memphis.md (100%)
+ rename skills/creative/{baoyu-infographic/references => baoyu-skills/references/infographic}/styles/craft-handmade.md (100%)
+ rename skills/creative/{baoyu-infographic/references => baoyu-skills/references/infographic}/styles/cyberpunk-neon.md (100%)
+ rename skills/creative/{baoyu-infographic/references => baoyu-skills/references/infographic}/styles/hand-drawn-edu.md (100%)
+ rename skills/creative/{baoyu-infographic/references => baoyu-skills/references/infographic}/styles/ikea-manual.md (100%)
+ rename skills/creative/{baoyu-infographic/references => baoyu-skills/references/infographic}/styles/kawaii.md (100%)
+ rename skills/creative/{baoyu-infographic/references => baoyu-skills/references/infographic}/styles/knolling.md (100%)
+ rename skills/creative/{baoyu-infographic/references => baoyu-skills/references/infographic}/styles/lego-brick.md (100%)
+ rename skills/creative/{baoyu-infographic/references => baoyu-skills/references/infographic}/styles/morandi-journal.md (100%)
+ rename skills/creative/{baoyu-infographic/references => baoyu-skills/references/infographic}/styles/origami.md (100%)
+ rename skills/creative/{baoyu-infographic/references => baoyu-skills/references/infographic}/styles/pixel-art.md (100%)
+ rename skills/creative/{baoyu-infographic/references => baoyu-skills/references/infographic}/styles/pop-laboratory.md (100%)
+ rename skills/creative/{baoyu-infographic/references => baoyu-skills/references/infographic}/styles/retro-pop-grid.md (100%)
+ rename skills/creative/{baoyu-infographic/references => baoyu-skills/references/infographic}/styles/storybook-watercolor.md (100%)
+ rename skills/creative/{baoyu-infographic/references => baoyu-skills/references/infographic}/styles/subway-map.md (100%)
+ rename skills/creative/{baoyu-infographic/references => baoyu-skills/references/infographic}/styles/technical-schematic.md (100%)
+ rename skills/creative/{baoyu-infographic/references => baoyu-skills/references/infographic}/styles/ui-wireframe.md (100%)
+ delete mode 100644 skills/devops/hermes-full-optimization/SKILL.md
+ rename skills/devops/{hermes-full-optimization => hermes-hardening}/references/benchmark.md (100%)
+ rename skills/devops/{hermes-full-optimization => hermes-hardening}/references/scrapling-setup.md (100%)
+ rename skills/devops/{hermes-full-optimization => hermes-hardening}/references/verification-session.md (100%)
+ rename skills/{autonomous-ai-agents/kanban-codex-lane/templates/pmb-codex-lane-prompt.md => devops/kanban-worker/references/codex-lane-prompt.md} (100%)
+ delete mode 100644 skills/github/github-auth/SKILL.md
+ delete mode 100644 skills/github/github-code-review/SKILL.md
+ delete mode 100644 skills/github/github-issues/SKILL.md
+ delete mode 100644 skills/github/github-pr-workflow/SKILL.md
+ delete mode 100644 skills/github/github-repo-management/SKILL.md
+ create mode 100644 skills/github/github-workflows/SKILL.md
+ rename skills/github/{github-pr-workflow => github-workflows}/references/ci-troubleshooting.md (100%)
+ rename skills/github/{github-pr-workflow => github-workflows}/references/conventional-commits.md (100%)
+ rename skills/github/{github-repo-management => github-workflows}/references/github-api-cheatsheet.md (100%)
+ rename skills/github/{github-code-review => github-workflows}/references/review-output-template.md (100%)
+ rename skills/github/{github-auth => github-workflows}/scripts/gh-env.sh (100%)
+ rename skills/github/{github-issues => github-workflows}/templates/bug-report.md (100%)
+ rename skills/github/{github-issues => github-workflows}/templates/feature-request.md (100%)
+ rename skills/github/{github-pr-workflow => github-workflows}/templates/pr-body-bugfix.md (100%)
+ rename skills/github/{github-pr-workflow => github-workflows}/templates/pr-body-feature.md (100%)
+ create mode 100644 skills/software-development/development-workflow/SKILL.md
+ rename skills/software-development/{subagent-driven-development => development-workflow}/references/context-budget-discipline.md (100%)
+ rename skills/software-development/{subagent-driven-development => development-workflow}/references/gates-taxonomy.md (100%)
+ create mode 100644 skills/software-development/development-workflow/references/pre-commit-review.md
+ create mode 100644 skills/software-development/development-workflow/references/subagent-driven-development.md
+ create mode 100644 skills/software-development/development-workflow/references/test-driven-development.md
+ delete mode 100644 skills/software-development/plan/SKILL.md
+ delete mode 100644 skills/software-development/requesting-code-review/SKILL.md
+ delete mode 100644 skills/software-development/subagent-driven-development/SKILL.md
+ delete mode 100644 skills/software-development/test-driven-development/SKILL.md
+To https://github.com/gilliansoso/hermes-knowledge-base.git
+   fee47dc..7c10b64  main -> main
+✓ Pushed 2026-06-25 skill sync
+[2026-06-25] Done
