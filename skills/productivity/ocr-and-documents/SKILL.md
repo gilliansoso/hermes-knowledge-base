@@ -15,6 +15,7 @@ metadata:
 
 For DOCX: use `python-docx` (parses actual document structure, far better than OCR).
 For PPTX: see the `powerpoint` skill (uses `python-pptx` with full slide/notes support).
+For **PDF text editing via natural-language prompts**: see `references/nano-pdf.md` (uses the nano-pdf CLI tool — edit titles, typos, dates on specific pages).
 This skill covers **PDFs and scanned documents**.
 
 ## Step 1: Remote URL Available?

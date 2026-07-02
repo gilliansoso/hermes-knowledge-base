@@ -18,6 +18,8 @@ triggers:
 Everything here is a GUIDELINE, not a rule. Art breaks rules on purpose.
 Use what serves the song. Ignore what doesn't.
 
+> **Related tool:** For locally-hosted open-source music generation (HeartMuLa model family), see `references/heartmula.md`. HeartMuLa is a free Apache-2.0 alternative to Suno that runs on your own GPU — supports the same lyrics+tags input format with multilingual lyrics. Setup instructions, required patches, and parameter tuning are in the reference file.
+
 ---
 
 ## 1. Song Structure (Pick One or Invent Your Own)
