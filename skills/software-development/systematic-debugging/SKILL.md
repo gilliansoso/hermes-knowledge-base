@@ -356,9 +356,65 @@ When fixing bugs:
 3. Fix the root cause (GREEN)
 4. The test proves the fix and prevents regression
 
-## Real-World Impact
+---
 
-From debugging sessions:
+## Tool-Specific Debugging Techniques
+
+Once you've identified the root cause (Phase 1), use the right tool to inspect the code at runtime. The tool you pick depends on the language and runtime environment:
+
+| Language / Runtime | Tool | When to use |
+|---|---|---|
+| **Python (local)** | `breakpoint()` + pdb | Quick local inspection, simple stepping |
+| **Python (remote)** | `debugpy` | Long-lived processes, subprocesses, headless |
+| **Python (tests)** | `pytest --pdb` | Test failures with complex state |
+| **Node.js** | `node inspect` | Simple breakpoints, REPL inspection |
+| **Node.js (CDP)** | `chrome-remote-interface` | Automated breakpoints, heap snapshots, profiling |
+| **Hermes TUI** | Both Python + Node tools | Slash commands span Python backend + Ink frontend |
+
+See the reference files for full details on each tool.
+
+### Python Debugging (`references/python-debugging.md`)
+
+Three tools, picked by situation:
+
+| Tool | When |
+|---|---|
+| **`breakpoint()` + pdb** | Local, interactive, simplest. Add `breakpoint()` in source, run normally. |
+| **`python -m pdb`** | Launch script under pdb with no source edits. |
+| **`debugpy`** | Remote / headless / attach to running process. Talks DAP. |
+
+**Start with `breakpoint()`.** It's the cheapest thing that works.
+
+Key pdb commands: `n` (next), `s` (step into), `c` (continue), `w` (where/stack), `interact` (full REPL), `!stmt` (mutate state).
+
+For remote debugging: `remote-pdb` is the cleanest agent-friendly choice — gives you a `(Pdb)` prompt over `nc`. Use `debugpy` only when you need IDE integration (VS Code attach).
+
+### Node.js Debugging (`references/node-debugging.md`)
+
+Two tools:
+
+- **`node inspect`** — built-in, zero install, CLI REPL. Best for quick poking.
+- **CDP via `chrome-remote-interface`** — scriptable from Node/Python; best for automating many breakpoints.
+
+Commands: `sb('file.js', 42)` (set breakpoint), `cont` (continue), `repl` (inspect scope), `bt` (backtrace).
+
+### Hermes TUI Slash Commands (`references/debugging-tui-commands.md`)
+
+Commands span three layers — Python command registry, tui_gateway JSON-RPC bridge, and the Ink/TypeScript frontend. When a command misbehaves, the bug is almost always one layer out of sync with another.
+
+**Investigation steps:**
+1. Check if the command exists in the TUI frontend (`search_files --pattern "/commandname" --file_glob "*.ts" --path ui-tui/`)
+2. Check if it exists in the Python backend (`search_files --pattern "CommandDef" --path hermes_cli/commands.py`)
+3. Check gateway implementation (`search_files --pattern "slash.exec" --path tui_gateway/`)
+
+**Architecture:**
+```
+Python backend (hermes_cli/commands.py) → TUI gateway (tui_gateway/server.py) → TUI frontend (ui-tui/src/app/slash/)
+```
+
+---
+
+## Real-World Impact
 - Systematic approach: 15-30 minutes to fix
 - Random fixes approach: 2-3 hours of thrashing
 - First-time fix rate: 95% vs 40%

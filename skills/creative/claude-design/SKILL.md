@@ -1,6 +1,6 @@
 ---
 name: claude-design
-description: Design one-off HTML artifacts (landing, deck, prototype).
+description: "Design one-off HTML artifacts (landing, deck, prototype, sketch variants). Design process and taste: brief scoping, context gathering, variant exploration (including throwaway Sketch mode for quick comparison), local artifact creation, verification."
 version: 1.0.0
 author: BadTechBandit
 license: MIT
@@ -326,6 +326,25 @@ When exploring, default to at least three options:
 1. **Conservative** — closest to existing patterns / lowest risk
 2. **Strong-fit** — best interpretation of the brief
 3. **Divergent** — more novel, useful for discovering taste boundaries
+
+### Sketch Mode (Quick Throwaway Variants)
+
+For very early exploration where the goal is to compare directions before committing to a production path, use **Sketch Mode**. See `references/sketch.md` for the full methodology.
+
+Sketch mode vs full design:
+| Dimension | Sketch Mode | Full Design |
+|-----------|-------------|-------------|
+| Artifact | Throwaway HTML | Polished artifact |
+| Fidelity | System fonts, CDN Tailwind, rough edges | Carefully crafted, custom type |
+| Interactivity | One meaningful click/hover/toggle | Full state coverage |
+| Output | 2-3 variants + comparison table | One consolidated direction |
+| Lifespan | Deleted after decision | Preserved for production |
+
+**When to sketch:** The user says "show me what X could look like", "compare layout A vs B", "give me 2-3 takes", "mockup this before I build".
+
+**When NOT to sketch:** The design is already locked, the user wants production code, or the deliverable is a finished artifact.
+
+### Variant Axes
 
 Variations can explore:
 

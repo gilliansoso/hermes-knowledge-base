@@ -1,6 +1,6 @@
 ---
 name: development-workflow
-description: "Complete development lifecycle: TDD, subagent-driven execution, pre-commit review gates. Write tests first, execute via subagents with two-stage review, verify before commit."
+description: "Complete development lifecycle: planning, spike validation, TDD, subagent-driven execution, pre-commit review gates. Write tests first, execute via subagents with two-stage review, verify before commit."
 tags: [development, workflow, tdd, subagent, code-review, verification, quality]
 ---
 
@@ -16,13 +16,7 @@ See the full TDD playbook in `references/test-driven-development.md`.
 
 ## Lifecycle Overview
 
-```
-Plan (writing-plans)
-  → TDD cycle (test-first, minimal code, refactor)
-  → Subagent-driven execution (fresh agent per task)
-  → Pre-commit verification (static scan + reviewer)
-  → Commit
-```
+```\nPlan (references/writing-plans.md)\n  → Spike (references/spike.md) — validate unknowns before committing\n  → TDD cycle (test-first, minimal code, refactor)\n  → Subagent-driven execution (fresh agent per task)\n  → Pre-commit verification (static scan + reviewer)\n  → Commit\n```
 
 ## 1. Test-Driven Development (TDD)
 
@@ -109,7 +103,51 @@ Full details: `references/subagent-driven-development.md`
 
 ---
 
-## 3. Pre-Commit Verification Review
+## 3. Implementation Plans (Writing Plans)
+
+Before writing code, write a comprehensive plan. See `references/writing-plans.md` for the full methodology.
+
+**Core principle:** A good plan makes implementation obvious. If someone has to guess, the plan is incomplete.
+
+**Bite-sized tasks:** Each task should be 2-5 minutes of focused work — one file, one concept, one test cycle.
+
+### Process
+1. **Understand requirements** — read the feature spec, acceptance criteria, constraints
+2. **Explore the codebase** — understand structure, find similar patterns, check existing tests
+3. **Design approach** — choose architecture, file organization, dependencies, testing strategy
+4. **Write tasks** — setup → core (TDD per task) → edge cases → integration → cleanup
+5. **Verify the plan** — sequential? bite-sized? exact file paths? complete code examples?
+
+When delegating to subagents, dispense tasks one at a time with full context, exact file paths, and code examples.
+
+### Plan Mode (No-Execution)
+When the user asks for a plan without execution (`/plan` command), write the plan to `.hermes/plans/YYYY-MM-DD_HHMMSS-<slug>.md` and offer to execute later.
+
+---
+
+## 4. Spikes (Throwaway Experiments)
+
+Some ideas need validation before committing to a full build. See `references/spike.md` for the complete methodology.
+
+**Use spikes when:** validating feasibility, comparing approaches, surfacing unknowns that research alone can't answer.
+
+### Core loop
+```
+decompose → research → build → verdict
+```
+
+### Anatomy of a spike
+- Break the idea into **2-5 independent feasibility questions** (Given/When/Then framing)
+- Order by risk — the spike most likely to kill the idea runs first
+- Build each as a standalone, disposable artifact
+- Close with a clear verdict: VALIDATED, PARTIAL, or INVALIDATED
+- Keep them disposable — a spike that needs preserving should be promoted to real code
+
+Full details: `references/spike.md`
+
+---
+
+## 5. Pre-Commit Verification Review
 
 Before any code lands: static scan, baseline tests, independent reviewer, auto-fix loop.
 
@@ -166,5 +204,7 @@ Full details: `references/pre-commit-review.md`
 - `references/test-driven-development.md` — Full TDD methodology with rationalizations and anti-patterns
 - `references/subagent-driven-development.md` — Full SDD process with two-stage review examples
 - `references/pre-commit-review.md` — Full verification pipeline with static scan, reviewer, and auto-fix
+- `references/writing-plans.md` — Implementation plan methodology (bite-sized tasks, exact paths, complete examples)
+- `references/spike.md` — Throwaway experiments for feasibility validation (Given/When/Then verdicts)
 - `references/gates-taxonomy.md` — The four canonical gate types (Pre-flight, Revision, Escalation, Abort)
 - `references/context-budget-discipline.md` — Context degradation model for large multi-phase runs
