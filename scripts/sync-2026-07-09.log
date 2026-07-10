@@ -1,1 +1,23 @@
 [2026-07-09] Syncing skills...
+[main f4c10ec] skills: daily sync 2026-07-09
+ 22 files changed, 756 insertions(+), 1774 deletions(-)
+ create mode 100644 scripts/sync-2026-07-09.log
+ create mode 100644 skills/.curator_backups/2026-07-08T07-41-22Z/cron-jobs.json
+ create mode 100644 skills/.curator_backups/2026-07-08T07-41-22Z/manifest.json
+ create mode 100644 skills/.curator_backups/2026-07-08T07-41-22Z/skills.tar.gz
+ create mode 100644 skills/creative/claude-design/references/sketch.md
+ delete mode 100644 skills/creative/sketch/SKILL.md
+ delete mode 100644 skills/software-development/debugging-hermes-tui-commands/SKILL.md
+ create mode 100644 skills/software-development/development-workflow/references/spike.md
+ create mode 100644 skills/software-development/development-workflow/references/writing-plans.md
+ delete mode 100644 skills/software-development/node-inspect-debugger/SKILL.md
+ delete mode 100644 skills/software-development/python-debugpy/SKILL.md
+ delete mode 100644 skills/software-development/spike/SKILL.md
+ create mode 100644 skills/software-development/systematic-debugging/references/debugging-tui-commands.md
+ create mode 100644 skills/software-development/systematic-debugging/references/node-debugging.md
+ create mode 100644 skills/software-development/systematic-debugging/references/python-debugging.md
+ delete mode 100644 skills/software-development/writing-plans/SKILL.md
+To https://github.com/gilliansoso/hermes-knowledge-base.git
+   2524a89..f4c10ec  main -> main
+✓ Pushed 2026-07-09 skill sync
+[2026-07-09] Done
