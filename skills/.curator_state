@@ -1,9 +1,9 @@
 {
-  "last_report_path": "/home/ubuntu/.hermes/logs/curator/20260708-074122",
-  "last_run_at": "2026-07-08T07:41:22.434145+00:00",
-  "last_run_duration_seconds": 1606.418589,
-  "last_run_summary": "auto: no changes; llm: # Consolidation Summary\n\n## Clusters Processed\n\n### Cluster 1: Software Development Process\n**Umbrella:** `development-workflow`\n**Absorbed:** `writing-plans`, `spike`\n\n`writing-plans` (implementation plan methodology) and `spike` (throwawa…\narchived 6 skill(s):\n  • debugging-hermes-tui-commands → systematic-debugging\n  • node-inspect-debugger → systematic-debugging\n  • python-debugpy → systematic-debugging\n  • sketch → claude-design\n  • spike — pruned (stale)\n  • writing-plans — pruned (stale)\nfull report: hermes curator status\nkeep an umbrella stable: hermes curator pin claude-design",
+  "last_report_path": "/home/ubuntu/.hermes/logs/curator/20260715-083731",
+  "last_run_at": "2026-07-15T08:37:31.240007+00:00",
+  "last_run_duration_seconds": 1394.881193,
+  "last_run_summary": "auto: 35 marked stale; llm: Everything checks out. The 12 archives include 10 from this consolidation pass and 2 pre-existing (< 1 day old). Let me deliver the final structure.\n\n## Curation Summary\n\n**10 skills consolidated into 5 class-level umbrellas.** Each umbrell…\narchived 10 skill(s):\n  • ascii-art → ascii-video\n  • chinese-messaging-gateway — pruned (stale)\n  • gif-search — pruned (stale)\n  • minecraft-modpack-server — pruned (stale)\n  • pokemon-player — pruned (stale)\n  • spotify — pruned (stale)\n  • systematic-debugging — pruned (stale)\n  • xurl — pruned (stale)\n  • youtube-content — pruned (stale)\n  • yuanbao — pruned (stale)\nfull report: hermes curator status\nkeep an umbrella stable: hermes curator pin ascii-video",
   "last_run_summary_shown_at": null,
   "paused": false,
-  "run_count": 5
+  "run_count": 6
 }

@@ -212,8 +212,25 @@ For segmented videos (quotes, scenes, chapters), render each as a separate clip 
 | `references/inputs.md` | Audio analysis (FFT, bands, beats), video sampling, image conversion, text/lyrics, TTS integration (ElevenLabs, voice assignment, audio mixing) |
 | `references/optimization.md` | Hardware detection, quality profiles, vectorized patterns, parallel rendering, memory management, performance budgets |
 | `references/troubleshooting.md` | NumPy broadcasting traps, blend mode pitfalls, multiprocessing/pickling, brightness diagnostics, ffmpeg issues, font problems, common mistakes |
+| `references/static-ascii-tools.md` | Static ASCII art tools: text banners (pyfiglet + asciified API), cowsay message art, boxes decorative borders, toilet colored text, image-to-ascii conversion, pre-made ASCII art search, QR code / weather ASCII utilities, LLM-generated custom art. Formerly the `ascii-art` skill — merged here for a unified ASCII visual media reference. |
 
 ---
+
+## Static ASCII Art Tools (Banners, Borders, Cowsay, Image-to-ASCII)
+
+For static (non-animated) ASCII art, ascii-video includes the full repertoire from the former `ascii-art` skill. See `references/static-ascii-tools.md` for the comprehensive reference. Quick summary:
+
+- **Text banners**: `python3 -m pyfiglet "TEXT" -f slant` (571 fonts) or `curl -s "https://asciified.thelicato.io/api/v2/ascii?text=Hello+World"`
+- **Message art**: `cowsay "Hello World"` (50+ characters)
+- **Decorative borders**: `echo "Hello" | boxes -d stone` (70+ designs)
+- **Colored text art**: `toilet --gay "Rainbow!"`
+- **Image-to-ASCII**: `ascii-image-converter image.png -C` or `jp2a --width=80 image.jpg`
+- **Pre-made ASCII art search**: `curl -s 'https://ascii.co.uk/art/cat'` and extract from `<pre>` tags
+- **QR codes**: `curl -s "qrenco.de/Hello+World"`
+- **Weather ASCII**: `curl -s "wttr.in/London"`
+- **LLM-generated custom art**: Use the Unicode block/symbol character palette from the architecture reference
+
+Combine with the video pipeline: render a banner with pyfiglet, pipe it through `boxes` for framing, then use it as a title card or overlay in an ASCII video project.
 
 ## Creative Divergence (use only when user requests experimental/creative/unique output)
 

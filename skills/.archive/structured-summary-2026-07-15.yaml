@@ -1,0 +1,32 @@
+consolidations:
+  - from: ascii-art
+    into: ascii-video
+    reason: Static ASCII tools (banners, borders, image-to-ascii) are a natural subsection of the ASCII video production pipeline — both are "ASCII visual media"
+  - from: systematic-debugging
+    into: development-workflow
+    reason: Debugging is a natural phase of the software development lifecycle; one "development" umbrella with a debugging subsection replaces two separate skills
+  - from: gif-search
+    into: media-platform-apis
+    reason: GIF search, Spotify, and YouTube all wrap media content retrieval APIs with the same auth+query workflow
+  - from: spotify
+    into: media-platform-apis
+    reason: Same class as gif-search and youtube-content — media content API integrations
+  - from: youtube-content
+    into: media-platform-apis
+    reason: Same class as gif-search and spotify — media content API integrations
+  - from: xurl
+    into: social-platform-integrations
+    reason: X/Twitter, Yuanbao, and Chinese messaging platform integrations all serve the same class — social/messaging platform API connectivity
+  - from: yuanbao
+    into: social-platform-integrations
+    reason: Same class as xurl and chinese-messaging-gateway — social platform API integration
+  - from: chinese-messaging-gateway
+    into: social-platform-integrations
+    reason: Same class as xurl and yuanbao — social/messaging platform API connectivity
+  - from: minecraft-modpack-server
+    into: gaming-setup-and-play
+    reason: Both Minecraft and Pokemon are headless gaming experiences — one "Gaming Setup & Play" umbrella replaces two narrow gaming skills
+  - from: pokemon-player
+    into: gaming-setup-and-play
+    reason: Same class as minecraft-modpack-server — CLI-driven gaming setup and play
+prunings: []

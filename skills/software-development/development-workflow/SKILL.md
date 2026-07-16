@@ -199,6 +199,73 @@ Full details: `references/pre-commit-review.md`
 
 ---
 
+## 6. Systematic Debugging — 4-Phase Root Cause Investigation
+
+**Core principle:** ALWAYS find root cause before attempting fixes. Symptom fixes are failure.
+
+**The Iron Law: NO FIXES WITHOUT ROOT CAUSE INVESTIGATION FIRST**
+
+### Phase 1: Root Cause Investigation
+
+Before attempting ANY fix:
+
+1. **Read error messages carefully** — stack traces, line numbers, error codes
+2. **Reproduce consistently** — can you trigger it reliably? What are the exact steps?
+3. **Check recent changes** — `git log --oneline -10`, `git diff`, trace what changed
+4. **Gather evidence in multi-component systems** — log what enters/exits each component boundary
+5. **Trace data flow** — where does the bad value originate? Fix at the source, not the symptom
+
+Commands:
+```bash
+# Run specific failing test
+pytest tests/test_module.py::test_name -v --tb=long
+# Recent commits
+git log --oneline -10
+# Find where a function is called
+search_files("function_name(", path="src/", file_glob="*.py")
+```
+
+### Phase 2: Pattern Analysis
+
+1. Find working examples of similar code in the codebase
+2. Compare against the broken implementation — list every difference
+3. Understand dependencies, assumptions, environment
+
+### Phase 3: Hypothesis and Testing
+
+1. Form a single hypothesis: "I think X is the root cause because Y"
+2. Test minimally — ONE variable at a time. Don't fix multiple things at once
+3. Verify before continuing. If it didn't work, form a NEW hypothesis
+
+### Phase 4: Implementation
+
+1. Create a failing regression test first (TDD: RED)
+2. Implement the single fix addressing the root cause
+3. Verify the fix and that no regressions were introduced
+4. **Rule of Three**: If 3+ fixes failed, **STOP and question the architecture** — discuss with the user before attempting more fixes
+
+### Red Flags (STOP and return to Phase 1)
+
+- "Quick fix for now, investigate later"
+- "Just try changing X and see if it works"
+- "I don't fully understand but this might work"
+- Proposing solutions before tracing data flow
+- 3+ fix attempts without architectural discussion
+
+### Language-Specific Debugging Tools
+
+| Language / Runtime | Tool | When to use |
+|---|---|---|
+| **Python (local)** | `breakpoint()` + pdb | Quick local inspection, simple stepping |
+| **Python (remote)** | `debugpy` | Long-lived processes, subprocesses, headless |
+| **Python (tests)** | `pytest --pdb` | Test failures with complex state |
+| **Node.js** | `node inspect` | Simple breakpoints, REPL inspection |
+| **Node.js (CDP)** | `chrome-remote-interface` | Automated breakpoints, heap snapshots, profiling |
+
+Full details in `references/debugging/` — see the reference files for Python, Node.js, and Hermes TUI-specific debugging techniques.
+
+---
+
 ## References
 
 - `references/test-driven-development.md` — Full TDD methodology with rationalizations and anti-patterns
@@ -207,4 +274,7 @@ Full details: `references/pre-commit-review.md`
 - `references/writing-plans.md` — Implementation plan methodology (bite-sized tasks, exact paths, complete examples)
 - `references/spike.md` — Throwaway experiments for feasibility validation (Given/When/Then verdicts)
 - `references/gates-taxonomy.md` — The four canonical gate types (Pre-flight, Revision, Escalation, Abort)
-- `references/context-budget-discipline.md` — Context degradation model for large multi-phase runs
+- `references/debugging/FULL.md` — Full 4-phase systematic debugging methodology (former `systematic-debugging` skill) including Python, Node.js, and Hermes TUI debugging techniques
+- `references/debugging/python-debugging.md` — pdb, breakpoint(), remote-pdb, debugpy, pytest --pdb
+- `references/debugging/node-debugging.md` — node inspect, chrome-remote-interface (CDP)
+- `references/debugging/debugging-tui-commands.md` — Hermes TUI slash command debugging
